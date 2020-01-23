@@ -78,7 +78,7 @@ bot.on('message',msg=>{
                 bot.commands.get('Emoji').execute(msg,args);
                 break;
             // adds role (not working)
-            case "AddRole":
+           // case "AddRole":
                 //prints out test
             // msg.channel.send("TEST ");
                 //call addrole function
