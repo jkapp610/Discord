@@ -79,6 +79,7 @@ bot.on('message',msg=>{
                 break;
             // adds role (not working)
             case "AddRole":
+                //prints out test
              msg.channel.send("TEST ");
                 //call addrole function
                 //guild.createRole({
@@ -88,6 +89,7 @@ bot.on('message',msg=>{
                 //}).then(role => console.log('Created new role with ${role.name} and color ${role.color}'))
                // .catch(console.error)
                  break;
+
 
 
             
