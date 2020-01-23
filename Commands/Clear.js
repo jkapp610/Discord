@@ -16,8 +16,10 @@ module.exports = {
             return message.reply('Error please enter a number!!');
     }
     else{   
-        // deleate the number of messageges 
-        message.channel.bulkDelete(args[1]);
+        // set the number of deleate  to +1
+        var numdel = parseInt(args[1])+1;
+         // deleate the number of messageges 
+        message.channel.bulkDelete(numdel);
         }
     }
     

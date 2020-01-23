@@ -80,7 +80,7 @@ bot.on('message',msg=>{
             // adds role (not working)
             case "AddRole":
                 //prints out test
-             msg.channel.send("TEST ");
+            // msg.channel.send("TEST ");
                 //call addrole function
                 //guild.createRole({
                    // name:"TestRole",
