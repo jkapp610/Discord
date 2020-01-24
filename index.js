@@ -2,6 +2,8 @@
 const Discord =require('discord.js');
 //declaring the bot 
 const bot = new Discord.Client();
+//declaring guild
+//const guild = new Discord.guild();
 // token is the password to the bot
 const token = 'NjY1MDAyMDA0ODQxNjI3NjU4.Xh3wLw.wwc00j_BNrBEy1ugiE4WDl7fDuo';
 //constant for the prefix 
@@ -78,16 +80,11 @@ bot.on('message',msg=>{
                 bot.commands.get('Emoji').execute(msg,args);
                 break;
             // adds role (not working)
-           // case "AddRole":
-                //prints out test
-            // msg.channel.send("TEST ");
-                //call addrole function
-                //guild.createRole({
-                   // name:"TestRole",
-                    //color: "Blue"
-                // outputs error message that thw role was created
-                //}).then(role => console.log('Created new role with ${role.name} and color ${role.color}'))
-               // .catch(console.error)
+           case "CreateRole":
+                
+                //call the create role command
+                bot.commands.get('CreateRole').execute(msg,args);
+               
                  break;
 
 
