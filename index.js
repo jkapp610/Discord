@@ -86,6 +86,9 @@ bot.on('message',msg=>{
                 bot.commands.get('CreateRole').execute(msg,args);
                
                  break;
+            case 'AddRole':
+                bot.commands.get('AddRole').execute(msg,args);
+
 
             case"AddRole":
             bot.commands.get('AddRole').execute(msg,args)
