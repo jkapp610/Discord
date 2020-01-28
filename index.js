@@ -87,6 +87,9 @@ bot.on('message',msg=>{
                
                  break;
 
+            case"AddRole":
+            bot.commands.get('AddRole').execute(msg,args)
+
 
 
             
