@@ -79,19 +79,27 @@ bot.on('message',msg=>{
                  //call the emoji file
                 bot.commands.get('Emoji').execute(msg,args);
                 break;
-            // adds role (not working)
+            // create role 
            case "CreateRole":
                 
                 //call the create role command
                 bot.commands.get('CreateRole').execute(msg,args);
                
                  break;
+
             case 'AddRole':
                 bot.commands.get('AddRole').execute(msg,args);
+                break;
 
 
-            case"AddRole":
-            bot.commands.get('AddRole').execute(msg,args)
+            case"RemoveRole":
+                bot.commands.get('RemoveRole').execute(msg,args)
+                break;
+            
+            case "DelRole":
+                bot.commands.get('DeleteRole').execute(msg,args)
+               
+                break;
 
 
 
