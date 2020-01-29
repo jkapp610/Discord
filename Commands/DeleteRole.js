@@ -5,7 +5,7 @@ module.exports = {
     description: "Delete role from channel",
     //execute is the function that will run when the file is called
     execute(message,args){
-        msg.guild.roles.find(rol => rol.name === args[1]).delete();
+        message.guild.roles.find(rol => rol.name === args[1]).delete();
        
     }
 
