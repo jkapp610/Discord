@@ -2,18 +2,20 @@
 const Discord =require('discord.js');
 //declaring the bot 
 const bot = new Discord.Client();
-//declaring guild
-//const guild = new Discord.guild();
+
 // token is the password to the bot
 const token = 'NjY1MDAyMDA0ODQxNjI3NjU4.Xh3wLw.wwc00j_BNrBEy1ugiE4WDl7fDuo';
 //constant for the prefix 
 const Prefix = '!';
 // incuding the fs api for working with files (like including library in c++)
 const fs = require('fs');
+
 // create a discord collection  for storing the different commands
 bot.commands = new Discord.Collection();
+
 //get a;; the differn command files that end with .js
 const commandfiles = fs.readdirSync('./Commands/').filter(file => file.endsWith('.js'));
+
 // loop though the folder
 for(const file of commandfiles){
     const command = require(`./Commands/${file}`);
