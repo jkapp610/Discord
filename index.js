@@ -13,7 +13,7 @@ const fs = require('fs');
 // create a discord collection  for storing the different commands
 bot.commands = new Discord.Collection();
 
-//get a;; the differn command files that end with .js
+//get all the differnt command files that end with .js
 const commandfiles = fs.readdirSync('./Commands/').filter(file => file.endsWith('.js'));
 
 // loop though the folder
