@@ -1,5 +1,5 @@
 module.exports = {
-    //example of the command !CreateRole Cat #133acf
+    //example of the command !CreateRole Cat BLUE
 
     //name of the command 
     name: "CreateRole",
@@ -17,7 +17,7 @@ module.exports = {
             return message.reply('Error Please enter three arguments');
         }
 
-        // set roleName to name
+        // set roleName to name passed in
         const Name = args[1];
         //set color to the role color passed in 
         const color = args[2];

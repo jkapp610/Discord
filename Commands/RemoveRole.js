@@ -1,6 +1,6 @@
 
   module.exports = {
-    //example of the command !AddRole role name
+    //example of the command !RemoveRole name
 
     //name of the command 
     name: "RemoveRole",
