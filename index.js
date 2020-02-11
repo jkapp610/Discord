@@ -102,6 +102,13 @@ bot.on('message',msg=>{
                 bot.commands.get('DeleteRole').execute(msg,args)
                
                 break;
+            case "CreateChannel":
+                bot.commands.get('CreateChannel').execute(msg,args)
+                break;
+            case "DelChannel":
+                bot.commands.get('DeleteChannel').execute(msg,args)
+                break;
+                
 
 
 
