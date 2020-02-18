@@ -20,7 +20,7 @@ module.exports = {
         // set roleName to name passed in
         const Name = args[1];
         //set color to the role color passed in 
-        const color = args[2];
+        const color = args[2].toUpperCase();
         // call the create role function
         message.guild.createRole({
             name: Name,

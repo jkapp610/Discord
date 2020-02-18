@@ -9,7 +9,7 @@ module.exports = {
     execute(message,args){
         
         
-        // call the create role function
+        // call the Deleate role
         message.channel.delete()
         // outputs error message that the role was created
         .then(role => console.log('Channel Deleted'))

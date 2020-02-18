@@ -108,6 +108,15 @@ bot.on('message',msg=>{
             case "DelChannel":
                 bot.commands.get('DeleteChannel').execute(msg,args)
                 break;
+
+            case"Help":
+            bot.commands.get('Help').execute(msg,args)
+            break;
+
+            case "Edit":
+                bot.commands.get('EditRole').execute(msg,args)
+
+
                 
 
 
