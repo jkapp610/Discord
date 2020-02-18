@@ -42,7 +42,9 @@ bot.on('message',msg=>{
     // splits the prefix off from the argument
     const args= msg.content.substring(Prefix.length).split(" ");
     //swich case
+    msg.guild.roles.findAll
     switch(args[0]){
+       
         //if user types hello
         case'Hello':
             //reply 
