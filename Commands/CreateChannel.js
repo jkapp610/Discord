@@ -26,7 +26,7 @@ module.exports = {
         // outputs error message that the role was created
         }).then(channel => 
             {
-            channel.setParent(message.guild.channels.find(c => c.name == "Text Channels"));
+            channel.setParent(message.guild.channels.find(c => c.name == "Jlk Bot Channels"));
             console.log('Channel created');}
         ).catch(console.error)
         
