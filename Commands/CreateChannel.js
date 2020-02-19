@@ -24,8 +24,11 @@ module.exports = {
             
             type: "text"
         // outputs error message that the role was created
-        }).then(role => console.log('Channel created'))
-        .catch(console.error)
+        }).then(channel => 
+            {
+            channel.setParent(message.guild.channels.find(c => c.name == "Text Channels"));
+            console.log('Channel created');}
+        ).catch(console.error)
         
     }
 
