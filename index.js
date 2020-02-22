@@ -2,18 +2,20 @@
 const Discord =require('discord.js');
 //declaring the bot 
 const bot = new Discord.Client();
-//declaring guild
-//const guild = new Discord.guild();
+
 // token is the password to the bot
 const token = 'NjY1MDAyMDA0ODQxNjI3NjU4.Xh3wLw.wwc00j_BNrBEy1ugiE4WDl7fDuo';
 //constant for the prefix 
 const Prefix = '!';
 // incuding the fs api for working with files (like including library in c++)
 const fs = require('fs');
+
 // create a discord collection  for storing the different commands
 bot.commands = new Discord.Collection();
-//get a;; the differn command files that end with .js
+
+//get all the differnt command files that end with .js
 const commandfiles = fs.readdirSync('./Commands/').filter(file => file.endsWith('.js'));
+
 // loop though the folder
 for(const file of commandfiles){
     const command = require(`./Commands/${file}`);
@@ -40,7 +42,9 @@ bot.on('message',msg=>{
     // splits the prefix off from the argument
     const args= msg.content.substring(Prefix.length).split(" ");
     //swich case
+    msg.guild.roles.findAll
     switch(args[0]){
+       
         //if user types hello
         case'Hello':
             //reply 
@@ -100,6 +104,22 @@ bot.on('message',msg=>{
                 bot.commands.get('DeleteRole').execute(msg,args)
                
                 break;
+            case "CreateChannel":
+                bot.commands.get('CreateChannel').execute(msg,args)
+                break;
+            case "DelChannel":
+                bot.commands.get('DeleteChannel').execute(msg,args)
+                break;
+
+            case"Help":
+            bot.commands.get('Help').execute(msg,args)
+            break;
+
+            case "Edit":
+                bot.commands.get('EditRole').execute(msg,args)
+
+
+                
 
 
 
