@@ -14,7 +14,7 @@ module.exports = {
         }
         //check to see if there is a third argument if not outputs error
         if(!args[2]){
-            return message.reply('Error Please enter three arguments');
+            return message.reply('Error Please enter three arguments'); //QA AW: Instead of replying with this error, you could have it just set the color to the default role color in Discord
         }
 
         // set roleName to name passed in

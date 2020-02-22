@@ -14,7 +14,7 @@
         let myRole = message.guild.roles.find(rol => rol.name === args[1]);
         // add the role to user that sent the message
         member.removeRole(myRole).catch(console.error);
-
+//QA AW: Consider adding the error if statement from AddRole to show user that there was an error
 
 
     }
