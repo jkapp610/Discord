@@ -17,8 +17,9 @@
       }
         //set the role
         let myRole = message.guild.roles.find(rol => rol.name === args[1]);
-        // add the role to user that sent the message
+        //if the role exists (myRole! = null)
         if(myRole !=null){
+       // add the role to user that sent the message
         member.addRole(myRole).catch(console.error);
         }
         else{
