@@ -11,7 +11,7 @@ module.exports = {
              }
         //output and error if no new role name is given
         if(!args[2]){
-            return message.channel.send('Error: there is no newrole role name given ');
+            return message.channel.send('Error: there is no new role name given ');
             
         }
         //Set the role that needs to be changed
