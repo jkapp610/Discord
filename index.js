@@ -42,7 +42,7 @@ bot.on('message',msg=>{
     // splits the prefix off from the argument
     const args= msg.content.substring(Prefix.length).split(" ");
     //swich case
-    msg.guild.roles.findAll
+   
     switch(args[0]){
        
         //if user types hello
@@ -115,7 +115,7 @@ bot.on('message',msg=>{
             bot.commands.get('Help').execute(msg,args)
             break;
 
-            case "Edit":
+            case "EditRole":
                 bot.commands.get('EditRole').execute(msg,args)
 
 
