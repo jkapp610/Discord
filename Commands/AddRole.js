@@ -8,7 +8,7 @@
     description: "Add a role ",
     //execute is the function that gets ran when the file is called
     execute(message,args){
-        //get the menber that sent the message
+        //set the menber that sent the message
         let member = message.member;
         //if no role  given output and error
         if(!args[1]){
