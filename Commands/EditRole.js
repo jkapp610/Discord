@@ -24,7 +24,6 @@ module.exports = {
             myRole.edit({name: newName })
             .then(update => console.log(`${args[1]} was changed to ${args[2]}`))
             .catch(console.error)
-
         }
         else{
             //output a message error message

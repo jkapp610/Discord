@@ -30,22 +30,22 @@ module.exports = {
         //if not set color to a defult color
         if(!color){
             //set color to a default
-            color = "#999292";
+            color = "#999292";//hex code for gray
 
         }
         else{
              //set color to uppercase
             color= color.toUpperCase();
-          
-        }
-        // call the create role function
+          }
+         // call the create role function
         message.guild.createRole({
             name: name,
             color: color,
-        // outputs error message that the role was created
+        // outputs message that the role was created or an error if there were any
         }).then(role => console.log(`Role ${name} Created`))
         .catch(console.error)
-        
-    }
-
+        }
 }
+
+
+

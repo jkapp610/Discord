@@ -22,11 +22,12 @@
        // add the role to user that sent the message
         member.addRole(myRole).catch(console.error);
         }
+        //else send an error message to user
         else{
           message.channel.send(`Error: the role ${args[1]} does not exist`);
 
         }
-
-
     }
 }          
+
+
