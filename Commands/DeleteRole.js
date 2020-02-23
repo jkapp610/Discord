@@ -14,9 +14,11 @@ module.exports = {
             let myRole = message.guild.roles.find(rol => rol.name === args[1]);
             //if the role exists (myRole! = null)
             if(myRole !=null){
-           // add the role to user that sent the message
+           // delete the role 
             myRole.delete(myRole)
+            //output message to thr console
             .then(rol=> console.log(`Role ${args[1]} deleted`))
+            //output error message
             .catch(console.error);
             }
             //else send an error message to user
