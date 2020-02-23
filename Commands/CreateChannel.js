@@ -2,7 +2,7 @@ module.exports = {
     //example of the command !CreateRole Cat BLUE
 
     //name of the command 
-    name: "CreateChannel",
+    name: "createchannel",
     //description of the command
     description: "Creates a new text Channel",
     //execute is the function that gets ran when the file is called

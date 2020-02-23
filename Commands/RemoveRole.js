@@ -3,7 +3,7 @@
     //example of the command !RemoveRole name
 
     //name of the command 
-    name: "RemoveRole",
+    name: "removerole",
     //description of the command
     description: "Removes a role ",
     //execute is the function that gets ran when the file is called

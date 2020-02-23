@@ -1,6 +1,6 @@
 module.exports = {
     //name of the command
-    name: "EditRole",
+    name: "editrole",
     //description of the command
     description: "Delete role from channel",
     //execute is the function that will run when the file is called

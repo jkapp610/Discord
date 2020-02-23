@@ -1,6 +1,6 @@
 module.exports = {
   //name of the command
-  name: "Website",
+  name: "website",
   //description of the command 
   description: "gives a link to website",
   execute(message,args){

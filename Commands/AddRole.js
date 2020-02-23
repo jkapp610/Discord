@@ -3,7 +3,7 @@
     //example of the command !AddRole role name
 
     //name of the command 
-    name: "AddRole",
+    name: "addrole",
     //description of the command
     description: "Add a role ",
     //execute is the function that gets ran when the file is called
