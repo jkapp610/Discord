@@ -22,7 +22,7 @@ module.exports = {
         if(myRole!= null){
             // Edit name of a role
             myRole.edit({name: newName })
-            .then(update => console.log(`${args[1]} was changed to ${args[2]}`))
+            .then(console.log(`The role ${args[1]} was changed to ${args[2]}`))
             .catch(console.error)
         }
         else{

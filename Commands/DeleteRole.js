@@ -17,7 +17,7 @@ module.exports = {
            // delete the role 
             myRole.delete(myRole)
             //output message to thr console
-            .then(rol=> console.log(`Role ${args[1]} deleted`))
+            .then(console.log(`Role ${args[1]} deleted`))
             //output error message
             .catch(console.error);
             }

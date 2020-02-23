@@ -20,7 +20,11 @@
         //if the role exists (myRole! = null)
         if(myRole !=null){
        // add the role to user that sent the message
-        member.addRole(myRole).catch(console.error);
+        member.addRole(myRole)
+        //output message to console if role was added
+        .then(console.log(`the role ${args[1]} was added to you`))
+        //output error if it does not
+        .catch(console.error);
         }
         //else send an error message to user
         else{

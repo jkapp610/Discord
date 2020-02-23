@@ -42,7 +42,7 @@ module.exports = {
             name: name,
             color: color,
         // outputs message that the role was created or an error if there were any
-        }).then(role => console.log(`Role ${name} Created`))
+        }).then(console.log(`Role ${name} Created`))
         .catch(console.error)
         }
 }
