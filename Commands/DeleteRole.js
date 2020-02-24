@@ -1,6 +1,6 @@
 module.exports = {
     //name of the command
-    name: "DeleteRole",
+    name: "deleterole",
     //description of the command
     description: "Delete role from channel",
     //execute is the function that will run when the file is called
@@ -10,11 +10,23 @@ module.exports = {
             
             return message.channel.send('Error: there is no role name given ');
         }
-
-        // finds the role and deletes role
-        message.guild.roles.find(rol => rol.name === args[1]).delete();
-       
-       
+            //set the role
+            let myRole = message.guild.roles.find(rol => rol.name === args[1]);
+            //if the role exists (myRole! = null)
+            if(myRole !=null){
+           // delete the role 
+            myRole.delete(myRole)
+            //output message to thr console
+            .then(console.log(`Role ${args[1]} deleted`))
+            //output error message
+            .catch(console.error);
+            }
+            //else send an error message to user
+            else{
+              message.channel.send(`Error: the role ${args[1]} does not exist`);
+    
+            }
+        
     }
 
 }

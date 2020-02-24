@@ -3,7 +3,7 @@
     //example of the command !RemoveRole name
 
     //name of the command 
-    name: "RemoveRole",
+    name: "removerole",
     //description of the command
     description: "Removes a role ",
     //execute is the function that gets ran when the file is called
@@ -20,9 +20,14 @@
         //if the role exists (myRole! = null)
         if(myRole !=null){
            // remove the role to user that sent the message
-          member.removeRole(myRole).catch(console.error);
+          member.removeRole(myRole)
+          //output an message to console
+          .then(console.log(`the role ${args[1]} was removed form you`))
+          //output error if there is any
+          .catch(console.error);
         }
         else{
+          //output an error messages
           message.channel.send(`Error: the role ${args[1]} does not exist`);
 
         }

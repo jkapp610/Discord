@@ -39,92 +39,24 @@ bot.on('message',msg=>{
         return
 
     }
-    // splits the prefix off from the argument
+    // splits the prefix off from the arguments and split based on spaces
     const args= msg.content.substring(Prefix.length).split(" ");
-    //swich case
-   
-    switch(args[0]){
-       
-        //if user types hello
-        case'Hello':
-            //reply 
-            bot.commands.get('Hello').execute(msg,args);
-            
-            break;
-        // if user types Bye
-        case'Bye':
-            //call the bye cammand
-            bot.commands.get('Bye').execute(msg,args);
-            break;
-        //if uer types website
-        case'Website':
-            //call website command 
-            bot.commands.get('Website').execute(msg,args);
-            break;
-        //if user types clear 
-        case'Clear':
-            //call clear command pasiing the 
-            bot.commands.get('Clear').execute(msg,args);
-
-            break;
-        //if user types Embed
-        case'Embed':
-           //call the embed command
-           bot.commands.get('Embed').execute(msg,args);
-            break;
-        //if user types !Emoji
-        case"Emoji":
-            //call the emoji file
-            bot.commands.get('Emoji').execute(msg,args);
-            break;
-            //if user puts eye emoji 
-            case"👀":
-                
-                 //call the emoji file
-                bot.commands.get('Emoji').execute(msg,args);
-                break;
-            // create role 
-           case "CreateRole":
-                
-                //call the create role command
-                bot.commands.get('CreateRole').execute(msg,args);
-               
-                 break;
-
-            case 'AddRole':
-                bot.commands.get('AddRole').execute(msg,args);
-                break;
-
-
-            case"RemoveRole":
-                bot.commands.get('RemoveRole').execute(msg,args)
-                break;
-            
-            case "DelRole":
-                bot.commands.get('DeleteRole').execute(msg,args)
-               
-                break;
-            case "CreateChannel":
-                bot.commands.get('CreateChannel').execute(msg,args)
-                break;
-            case "DelChannel":
-                bot.commands.get('DeleteChannel').execute(msg,args)
-                break;
-
-            case"Help":
-            bot.commands.get('Help').execute(msg,args)
-            break;
-
-            case "EditRole":
-                bot.commands.get('EditRole').execute(msg,args)
-
-
-                
-
-
-
-            
-        
+    //set the first args to new varaiable called comandName and make the command name all lowercase
+    const commandName =args[0].toLowerCase();
+    //if there is not a command that maches the input output error message
+    if( !bot.commands.has(commandName)){
+       return msg.channel.send(`Error: there is no command that is named ${commandName}`);
+    }
+    //try to get the command 
+    try{
+        bot.commands.get(commandName).execute(msg,args);
+    }
+    //catch any error
+    catch(error){
+        //output error to cosole
+        console.error(error);
+        //output error to user
+        msg.channel.send("Error somthing went worng please try to run the command over");
     }
     
  

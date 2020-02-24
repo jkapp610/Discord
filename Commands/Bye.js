@@ -1,6 +1,6 @@
 module.exports = {
     //name of the command
-    name: "Bye",
+    name: "bye",
     //description of the command
     description: "says good bye",
     //execute is the function that will run when the file is called

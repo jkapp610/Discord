@@ -1,6 +1,6 @@
 module.exports = {
     //name of the command
-    name: "EditRole",
+    name: "editrole",
     //description of the command
     description: "Delete role from channel",
     //execute is the function that will run when the file is called
@@ -22,9 +22,8 @@ module.exports = {
         if(myRole!= null){
             // Edit name of a role
             myRole.edit({name: newName })
-            .then(update => console.log(`${args[1]} was changed to ${args[2]}`))
+            .then(console.log(`The role ${args[1]} was changed to ${args[2]}`))
             .catch(console.error)
-
         }
         else{
             //output a message error message

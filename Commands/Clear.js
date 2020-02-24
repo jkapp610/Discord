@@ -1,6 +1,6 @@
 module.exports = {
     //name of command
-    name: "Clear",
+    name: "clear",
     // description of command
     description: "clears messages from the channel given an argument",
      //execute is the function that will run when the file is called

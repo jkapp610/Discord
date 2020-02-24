@@ -5,7 +5,7 @@ const Discord =require('discord.js');
 
 module.exports = {
     //name of the command
-    name: "Embed",
+    name: "embed",
     //description of what the cammad does
     description: "creates an enbed in discord",
     // execute is the function that will be ran when the file is called
