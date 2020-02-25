@@ -5,7 +5,7 @@ module.exports = {
     name: "createrole",
     //description of the command
     description: "Creates a role ",
-    //execute is the function that gets ran when the file is called
+    //execute is the function that gets run when the file is called
     execute(message,args){
         //set  name and color
         let name = args[1];
@@ -26,7 +26,7 @@ module.exports = {
 
         }
 
-        //check to see if  a third argument is passed in
+        //check to see if a third argument is passed in
         //if not set color to a defult color
         if(!color){
             //set color to a default
