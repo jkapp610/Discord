@@ -11,13 +11,16 @@ module.exports = {
             return message.channel.send('Error: there is no role name given ');
         }
             //set the role
+
             let myRole = message.guild.roles.find(rol => rol.name === args[1]);
+          
             //if the role exists (myRole! = null)
             if(myRole !=null){
            // delete the role 
             myRole.delete(myRole)
             //output message to thr console
-            .then(console.log(`Role ${args[1]} deleted`))
+            .then(
+                message.channel.send(`Role ${arga[1]} deleted`))
             //output error message
             .catch(console.error);
             }
