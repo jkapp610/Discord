@@ -43,8 +43,8 @@ module.exports = {
             color: color,
         // outputs message that the role was created or an error if there were any
         
-        }).then((mess) => {
-            message.channel.send(`Role ${mess} Created`)})
+        }).then((newrole) => {
+            message.channel.send(`Role ${newrole} Created`)})
         .catch(console.error)
 
         

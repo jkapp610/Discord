@@ -22,7 +22,7 @@
            // remove the role to user that sent the message
           member.removeRole(myRole)
           //output an message to console
-          .then(console.log(`the role ${args[1]} was removed form you`))
+          .then(message.channel.send(`the role ${myRole} was removed form ${member} `))
           //output error if there is any
           .catch(console.error);
         }

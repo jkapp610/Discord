@@ -22,7 +22,8 @@
        // add the role to user that sent the message
         member.addRole(myRole)
         //output message to console if role was added
-        .then(console.log(`the role ${args[1]} was added to you`))
+        .then(
+          message.channel.send(`the role ${myRole} was added to ${member}`))
         //output error if it does not
         .catch(console.error);
         }

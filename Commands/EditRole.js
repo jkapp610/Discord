@@ -16,13 +16,15 @@ module.exports = {
         }
         //Set the role that needs to be changed
         const myRole = message.guild.roles.find(rol => rol.name === args[1]);
+       
         //set the new name
         const newName = args[2];
         //if the role exists (myRole! = null)
         if(myRole!= null){
             // Edit name of a role
             myRole.edit({name: newName })
-            .then(console.log(`The role ${args[1]} was changed to ${args[2]}`))
+            .then(newrole=>{
+                message.channel.send(`The role ${args[1]} was changed to ${newrole}`)})
             .catch(console.error)
         }
         else{
