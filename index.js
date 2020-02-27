@@ -4,7 +4,7 @@ const Discord =require('discord.js');
 const bot = new Discord.Client();
 
 // token is the password to the bot
-const token = 'NjY1MDAyMDA0ODQxNjI3NjU4.Xlf1TQ.p37Mzi3bvR55h82QnKOX0IaLFr0';
+const token = 'NjY1MDAyMDA0ODQxNjI3NjU4.Xlf8LA.uFOtIvIDTmucscmt9LNXP5RkZsc';
 //constant for the prefix 
 const Prefix = '!';
 // incuding the fs api for working with files (like including library in c++)
