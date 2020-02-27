@@ -30,7 +30,7 @@ module.exports = {
         //if not set color to a defult color
         if(!color){
             //set color to a default
-            color = "#999292";//hex code for gray
+            color = "#000000";//hex code for gray
 
         }
         else{
@@ -42,7 +42,7 @@ module.exports = {
             name: name,
             color: color,
         // outputs message that the role was created or an error if there were any
-        }).then(console.log(`Role ${name} Created`))
+        }).then(message.channel.send(`Role ${myRole} Created`))
         .catch(console.error)
         }
 }
