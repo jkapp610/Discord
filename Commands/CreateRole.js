@@ -36,7 +36,9 @@ module.exports = {
         else{
              //set color to uppercase
             usercolor= usercolor.toUpperCase();
+            // call check color if it returns false 
             if (checkcolor(usercolor) === false){
+                //return(exit command)
                 return
             }
           }
@@ -53,19 +55,28 @@ module.exports = {
         .catch(console.error)
 
         function checkcolor(color){
+            // array of accepted colors 
            const colors = ['RED','GREEN','WHITE','BLACK',"BLUE"];
+           //bool to keep track of if the color is accepted
            var bool = false;
+           //if the color is a hex
            if(color.startsWith('#')){
+               //return 
                return;
            }
+           // otherwise loop though the  accepted color array
            for(i=0;i<colors.length;i++){
+               //if the color is in the array
                if(color === colors[i]){
+                   //bool equals true
                    bool = true;
                }
            }
+           //if bool = false output error
             if(bool === false){
-             
+                // error message 
                 message.channel.send(`${color} is not a color that is recinized`);
+                //returm false
                 return false;
             }
            
