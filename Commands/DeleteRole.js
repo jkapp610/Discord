@@ -20,7 +20,7 @@ module.exports = {
             myRole.delete(myRole)
             //output message to thr console
             .then(
-                message.channel.send(`Role ${arga[1]} deleted`))
+                message.channel.send(`Role ${args[1]} deleted`))
             //output error message
             .catch(console.error);
             }

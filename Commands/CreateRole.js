@@ -9,7 +9,7 @@ module.exports = {
     execute(message,args){
         //set  name and color
         let name = args[1];
-        let color = args[2];
+        let usercolor = args[2];
         
         
         //check to see if there is a role name is passed in 
@@ -28,24 +28,49 @@ module.exports = {
 
         //check to see if a third argument is passed in
         //if not set color to a defult color
-        if(!color){
+        if(!usercolor){
             //set color to a default
-            color = "#000000";//hex code for gray
+            usercolor = "#000000";//hex code for black
 
         }
         else{
              //set color to uppercase
-            color= color.toUpperCase();
+            usercolor= usercolor.toUpperCase();
+            if (checkcolor(usercolor) === false){
+                return
+            }
           }
+      
+       
          // call the create role function
         message.guild.createRole({
             name: name,
-            color: color,
+            color: usercolor,
         // outputs message that the role was created or an error if there were any
         
         }).then((newrole) => {
             message.channel.send(`Role ${newrole} Created`)})
         .catch(console.error)
+
+        function checkcolor(color){
+           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE"];
+           var bool = false;
+           if(color.startsWith('#')){
+               return;
+           }
+           for(i=0;i<colors.length;i++){
+               if(color === colors[i]){
+                   bool = true;
+               }
+           }
+            if(bool === false){
+             
+                message.channel.send(`${color} is not a color that is recinized`);
+                return false;
+            }
+           
+
+        }
 
         
         }
