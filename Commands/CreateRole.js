@@ -30,7 +30,7 @@ module.exports = {
         //if not set color to a defult color
         if(!usercolor){
             //set color to a default
-            usercolor = "#000000";//hex code for black
+            usercolor = "BLACK";//hex code for black
 
         }
         else{
@@ -56,7 +56,7 @@ module.exports = {
 
         function checkcolor(color){
             // array of accepted colors 
-           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE"];
+           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","PINK","GOLD","PURPLE"];
            //bool to keep track of if the color is accepted
            var bool = false;
            //if the color is a hex
@@ -75,7 +75,7 @@ module.exports = {
            //if bool = false output error
             if(bool === false){
                 // error message 
-                message.channel.send(`${color} is not a color that is recinized`);
+                message.channel.send(`${color} is not a color that is recogized`);
                 //returm false
                 return false;
             }
