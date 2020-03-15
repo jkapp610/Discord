@@ -18,14 +18,20 @@
        
         //check to see if the role exists
         let myRole = message.guild.roles.find(rol => rol.name === args[1]);
+        
         //check to see if the member has the role
          let memberRole = message.member.roles.find(rol => rol.name === args[1]);
-        //if the role exists (myRole! = null)
+
+        //if the role exists and the member has the role (myRole! = null)
         if((myRole !=null) &&(memberRole != null)){
+
            // remove the role to user that sent the message
           member.removeRole(myRole)
+
           //output an message to console
+
           .then(message.channel.send(`the role ${myRole} was removed form ${member} `))
+
           //output error if there is any
           .catch(console.error);
         }
