@@ -15,9 +15,11 @@
             
             return message.channel.send('Error: there is no role name given ');
         }
-        //set the role
-        let memberRole = message.member.roles.find(rol => rol.name === args[1]);
+       
+        //check to see if the role exists
         let myRole = message.guild.roles.find(rol => rol.name === args[1]);
+        //check to see if the member has the role
+         let memberRole = message.member.roles.find(rol => rol.name === args[1]);
         //if the role exists (myRole! = null)
         if((myRole !=null) &&(memberRole != null)){
            // remove the role to user that sent the message
