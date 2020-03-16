@@ -1,3 +1,7 @@
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+
 
   module.exports = {
     //example of the command !AddRole role name
@@ -9,7 +13,15 @@
     //execute is the function that gets ran when the file is called
     execute(message,args){
         //set the menber that sent the message
-        let member = message.member;
+        let member;
+        if(!args[2]){
+          member = message.member;
+        }
+        else{
+          
+        member = client.users.find(user => user.username == args[2]);
+          
+        }
         //if no role  given output and error
         if(!args[1]){
             
