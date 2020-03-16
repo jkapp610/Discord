@@ -19,7 +19,7 @@ const client = new Discord.Client();
         }
         else{
           
-        member = client.users.find(user => user.username == args[2]);
+        member = client.users.find(user => user.username === args[2]);
           
         }
         //if no role  given output and error
