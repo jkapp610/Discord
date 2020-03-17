@@ -1,0 +1,9 @@
+1. deleteChannel command will by default delete the channel that it was typed in, additionally, if you put in the wrong channel name it will also delete the channel it was typed in.
+  1.a Possible add a are you sure prompt to this command to prevent accidental usage of it.
+  1.b Don't allow for the user to delete a channel if there is any parameters given to the command example don't delete channel that the user is in if they type '!deltechannel general' unless they are in the general channel (To protect the user from them selves);
+2. createChannel does not seem to break when trying with various different types of input, such as emoji's or pictures
+3. !help
+  3.a has outdated information about the deleteChannel commands
+  3.b outdated information about deleterole.
+4. !clear command putting a negative number for clear breaks the bot
+5. !clear crashes bot when putting in any integer that is 100 or greater
