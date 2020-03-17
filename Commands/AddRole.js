@@ -19,8 +19,16 @@ const client = new Discord.Client();
         }
         else{
           
-        member = client.users.find(user => user.username === args[2]);
+        
+        let memid =message.guild.members.find(user => user.username === args[2]).id;
+        //if(memid === null){
+         // return message.channel.send(`error no member named ${args[2]}`);
           
+       // }
+      
+        member = message.guild.members.get(memid);
+        
+      
         }
         //if no role  given output and error
         if(!args[1]){
