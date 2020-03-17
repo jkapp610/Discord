@@ -6,7 +6,7 @@ const client = new Discord.Client();
   module.exports = {
     //example of the command !AddRole role name
 
-    //name of the command 
+    //name of the command
     name: "addrole",
     //description of the command
     description: "Add a role ",
@@ -18,21 +18,21 @@ const client = new Discord.Client();
           member = message.member;
         }
         else{
-          
-        
+
+
         let memid =message.guild.members.find(user => user.username === args[2]).id;
         //if(memid === null){
          // return message.channel.send(`error no member named ${args[2]}`);
-          
+
        // }
-      
+
         member = message.guild.members.get(memid);
-        
-      
+
+
         }
         //if no role  given output and error
         if(!args[1]){
-            
+
           return message.channel.send('Error: there is no role name given ');
       }
         //set the role
@@ -53,6 +53,4 @@ const client = new Discord.Client();
 
         }
     }
-}          
-
-
+}
