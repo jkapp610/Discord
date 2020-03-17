@@ -23,7 +23,7 @@ module.exports = {
         if (numdel > 0 && numdel < 100) {           //QA-ZACH: Added if statement to prevent bot from crashing when enterting a value less than 0 and a value greater than or equal to 0
           message.channel.bulkDelete(numdel);
         } else {
-          return message.rply('Error please enter a valid number between 0,100'); //QA-ZACH: added a error message to handle error
+          return message.reply('Error please enter a valid number between 0,100'); //QA-ZACH: added a error message to handle error
         }
         }
     }
