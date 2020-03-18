@@ -12,21 +12,36 @@ const client = new Discord.Client();
     description: "Add a role ",
     //execute is the function that gets ran when the file is called
     execute(message,args){
-        //set the menber that sent the message
+        //declare a member 
         let member;
         if(!args[2]){
+         //set the menber that sent the message
           member = message.member;
         }
         else{
+          // declaring a member name
+          let memname;
+          //if the name does not have a space 
+          if(!args[3]){
+            //set memname to args[2]
+            memname = args[2];
 
+          }
+          // else
+          else{
+            //set memname to args 2 and ard args[3]
+            memname = args[2]+ " "+args[3];
 
-        let memid =message.guild.members.find(user => user.username === args[2]).id;
-        //if(memid === null){
-         // return message.channel.send(`error no member named ${args[2]}`);
+          }
+          
+          // sets the member based on the members name
+           member = message.guild.members.find('displayName', memname);
+           //if there is no member with the name
+           if (member === null){
+             // return an error
+            return  message.channel.send(`Error there is no member on this server by the name of ${memname}`);
+           }
 
-       // }
-
-        member = message.guild.members.get(memid);
 
 
         }
