@@ -53,10 +53,12 @@ module.exports = {
         }).then((newrole) => {
             message.channel.send(`Role ${newrole} Created`)})
         .catch(console.error)
+
+
         // fuction for making sure the that the color is a color 
         function checkcolor(color){
             // array of accepted colors 
-           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","PINK","GOLD","PURPLE"];
+           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","GOLD","PURPLE","ORANGE"];
            // array of hex charectors 
            const hexchar =["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
            //bool to keep track of if the color is accepted

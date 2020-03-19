@@ -15,10 +15,11 @@ module.exports = {
         Commands("Create Role","!CreateRole Cat red","Takes the name of the role and a color");
         Commands("Delete Role","!DelRole Cat","Takes the name if the role to delete");
         Commands("RemoveRole","!RemoveRole Cat","Takes the name of the role");
-        Commands("Add Role","!AddRole Cat","Adds the role of the user who typed the command");
+        Commands("Add Role","!AddRole Cat","Adds the role to the user who typed the command\n or to the user that is passed in ");
         Commands("Clear","!Clear 10","Takes the number of message they want to delete");
         Commands("Create Channel","!CreateChannel helloworld","Takes the channel name");
         Commands("Delete Channel","DelChannel","Deleate channel where the message is sent from\n(if i want to delete the helloworld cannel type this command in that channel)")
+        
         function Commands(title,Example,des){
             const embed = new Discord.RichEmbed()
              //creates a title for the embed
