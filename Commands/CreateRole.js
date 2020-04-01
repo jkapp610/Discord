@@ -8,8 +8,30 @@ module.exports = {
     //execute is the function that gets run when the file is called
     execute(message,args){
         //set  name and color
-        let name = args[1];                                 //QA-ZACH: Cannot create a role that have two more words in it.
-        let usercolor = args[2];
+        let name;                                 //QA-ZACH: Cannot create a role that have two more words in it.
+        let usercolor;
+
+         for(i=1;i < args.length;i++){
+            //if index is flag charector
+            if(args[i]!= ","){
+                //
+               if(i === 1){
+                   name= args[i];
+               }
+            
+               else
+                name= name + " "+args[i];
+                //message.channel.send(`this is name at index${i} is ${name}` );
+            }
+            else{
+                usercolor = args[i+1];
+                i++
+            }
+
+            
+        }
+
+
 
 
         //check to see if there is a role name is passed in

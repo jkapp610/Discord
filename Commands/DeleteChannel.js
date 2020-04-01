@@ -13,8 +13,27 @@ module.exports = {
 
             return message.reply('Error Please enter two arguments');
         }
+
+
+         // set channel Name to name passed in
+         let channelname;
+
+         for(i=1;i < args.length;i++){
+             
+                 //
+                if(i === 1){
+                    channelname= args[i];
+                }
+             
+                else{
+                 channelname= channelname + "-"+args[i];
+                }
+     
+             
+         }
+
         //sets the channel name passed in by user
-        let mychannel = message.guild.channels.find(ch => ch.name ===args[1]);
+        let mychannel = message.guild.channels.find(ch => ch.name === channelname);
         // if channel exists 
         if(mychannel != null){
             // call the Deleate role
@@ -24,7 +43,7 @@ module.exports = {
             .catch(console.error)
         }
         else{
-            message.channel.send(`Error there is no channel named ${args[1]}`);
+            message.channel.send(`Error there is no channel named ${channelname}`);
         }
 
     }

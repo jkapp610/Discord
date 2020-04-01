@@ -1,5 +1,5 @@
 module.exports = {
-    //example of the command !CreateRole Cat BLUE
+    //example of the command !Createchannel
 
     //name of the command
     name: "createchannel",
@@ -15,12 +15,27 @@ module.exports = {
             return message.reply('Error Please enter two arguments');
         }
 
-
         // set channel Name to name passed in
-        const Name = args[1];
+        let channelname;
+
+        for(i=1;i < args.length;i++){
+            
+                //
+               if(i === 1){
+                   channelname= args[i];
+               }
+            
+               else{
+                channelname= channelname + " "+args[i];
+               }
+    
+            
+        }
+
+    
 
         // call the create role function
-        message.guild.createChannel( Name,{ //QA-ZACH: this current allows the user to exceed the max character limit, but does not inform the user that they did preventing the creation of the channel 
+        message.guild.createChannel( channelname,{ //QA-ZACH: this current allows the user to exceed the max character limit, but does not inform the user that they did preventing the creation of the channel 
 
             type: "text"
         // outputs error message that the role was created
