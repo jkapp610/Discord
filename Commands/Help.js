@@ -12,13 +12,22 @@ module.exports = {
     execute(message,args){
 
 
-        Commands("Create Role","!CreateRole Cat red","Takes the name of the role and a color");
+        Commands("Create Role","!CreateRole Cat , red\n !CreateRole this is a test , red","Takes the name of the role and a color");
+
+        Commands("Add Role","!AddRole Cat\n !AddRole this is a test , Evilmonkeys ","Adds the role of the user who typed the command if no name is provided.\n otherwise will add the role to the user provided");
+
         Commands("Delete Role","!DeleteRole Cat","Takes the name if the role to delete");         //QA-ZACH: Modified values to represent that actual command
-        Commands("RemoveRole","!RemoveRole Cat","Takes the name of the role");
-        Commands("Add Role","!AddRole Cat","Adds the role of the user who typed the command");
-        Commands("Clear","!Clear 10","Takes the number of message they want to delete");
-        Commands("Create Channel","!CreateChannel helloworld","Takes the channel name");
-        Commands("Delete Channel","DeleteChannel","Delete channel where the message is sent from\n(if i want to delete the helloworld cannel type this command in that channel)") //QA-ZACH: Modified values to represent that actual command
+
+        Commands("RemoveRole","!RemoveRole Cat\n !removeRole this is a test , Evilmonkeys","Removesthe role of the user who typed the command if no name is provided.\n otherwise will add the role to the user provided");
+        
+        Commands("Clear","!Clear 10"," deletes the number of messages that is provided by the user");
+
+        Commands("Create Channel","!CreateChannel helloworld","crates a channel of the name that is provided by the user");
+        
+        Commands("Delete Channel","!deleteChannel channel name","Delete channelel that is passed by the user") //QA-ZACH: Modified values to represent that actual command
+
+
+
         function Commands(title,Example,des){
             const embed = new Discord.RichEmbed()
              //creates a title for the embed
