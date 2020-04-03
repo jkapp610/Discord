@@ -1,81 +1,113 @@
+module.exports = {
+  //example of the command !RemoveRole name
 
-  module.exports = {
-    //example of the command !RemoveRole name
+  //name of the command 
+  name: "removerole",
+  //description of the command
+  description: "Removes a role ",
+  //execute is the function that gets ran when the file is called
+  execute(message,args){
+    
 
-    //name of the command 
-    name: "removerole",
-    //description of the command
-    description: "Removes a role ",
-    //execute is the function that gets ran when the file is called
-    execute(message,args){
-         //declare a member 
-         let member;
-         if(!args[2]){
-          //set the menber that sent the message
-           member = message.member;
+    //declare variables 
+    let member; // member is the member who is getting the role
+    let rolename;//rolename is the name passed in by the user
+    let memberloc // memberloc is the loction in the args array where the membersname begains
+    // declaring a member name which is the name passd in my the user
+     let memname; 
+
+     //loop though the role name part of the args array
+     
+    for(i=1;i < args.length;i++){
+      //if index is Not flag charector (, tells you when you have reached the end of name) 
+      if(args[i]!= ","){
+          //if it is the first word of the role name set it equal to rolename
+         if(i === 1){
+             rolename= args[i];
          }
-         else{
-           // declaring a member name
-           let memname;
-           //if the name does not have a space 
-           if(!args[3]){
-             //set memname to args[2]
-             memname = args[2];
- 
-           }
-           // else
-           else{
-             //set memname to args 2 and ard args[3]
-             memname = args[2]+ " "+args[3];
- 
-           }
-           
-           // sets the member based on the members name
-            member = message.guild.members.find('displayName', memname);
-            //if there is no member with the name
-            if (member === null){
-              // return an error
-             return  message.channel.send(`Error there is no member on this server by the name of ${memname}`);
-            }
- 
- 
- 
-         }
-           //if no role  given output and error
-           if(!args[1]){
-            
-            return message.channel.send('Error: there is no role name given ');
-        }
-       
-        //check to see if the role exists
-        let myRole = message.guild.roles.find(rol => rol.name === args[1]);
+         // if it is not the first word of the role name add it to the end of the rolename
+         else
+          rolename= rolename + " "+args[i];
+          //message.channel.send(`this is name at index${i} is ${name}` );
+      }
+      //if it is the flag charector
+      else{
+        // set memloc to i + 1 and break out the loop
+        memberloc= i+1;
+        break;
         
-        //check to see if the member has the role
-         let memberRole = message.member.roles.find(rol => rol.name === args[1]);
-
-        //if the role exists and the member has the role (myRole! = null)
-        if((myRole !=null) &&(memberRole != null)){
-
-           // remove the role to user that sent the message
-          member.removeRole(myRole)
-
-          //output an message to console
-
-          .then(message.channel.send(`the role ${myRole} was removed form ${member} `))
-
-          //output error if there is any
-          .catch(console.error);
-        }
-        else{
-          //output an error messages
-          message.channel.send(`Error: the role ${args[1]} does not exist or is not a role that ${member} has`);
-
-        }
-
-
-
-        //QA AW: Consider adding the error if statement from AddRole to show user that there was an error
-
-
+      }
+     
     }
+  // loop though the last part  of the args array to get members name
+  for(j= memberloc;j< args.length;j++){
+
+    //if set the first word of the members name set it equal to memname
+    if(j === memberloc){
+      memname= args[memberloc];
+     
   }
+  //else (there is more than one word) and add it to the end
+  else{
+   memname= memname + " "+args[j];
+ 
+ 
+}
+
+  }
+  message.channel.send(`the members name is ${memname}`)
+  
+    if(!memname){
+     //set the menber that sent the message
+      member1 = message.member;
+    }
+    else{
+      // sets the member based on the members name
+       member = message.guild.members.find('displayName', memname);
+       //if there is no member with the name
+       if (member === null){
+         // return an error
+        return  message.channel.send(`Error there is no member on this server by the name of ${memname}`);
+       }
+     }
+    //if no role  given output and error
+    if(!rolename){
+
+      return message.channel.send('Error: there is no role name given ');
+  }
+ 
+      //check to see if the role exists
+      let myRole = message.guild.roles.find(rol => rol.name === rolename);
+      
+      //check to see if the member has the role
+      let memberRole = member.roles.find(rol => rol.name === rolename);
+      //let memberRole =1;
+      message.channel.send(`${myRole}`);
+      message.channel.send(`${memberRole}`);
+
+      //if the role exists and the member has the role (myRole! = null)
+      if((myRole !=null) &&(memberRole != null)){
+
+         // remove the role to user that sent the message
+        member.removeRole(myRole)
+
+        //output an message to console
+
+        .then(message.channel.send(`the role ${myRole} was removed form ${member} `))
+
+        //output error if there is any
+        .catch(console.error);
+      }
+      else{
+        //output an error messages
+        message.channel.send(`Error: the role ${rolename} does not exist or is not a role that ${member} has`);
+
+      }
+
+
+
+      //QA AW: Consider adding the error if statement from AddRole to show user that there was an error
+
+
+  }
+}
