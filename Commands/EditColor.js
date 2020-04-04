@@ -6,13 +6,21 @@ module.exports = {
     //execute is the function that will run when the file is called
     execute(message,args){
 
-    //set the new name
+        //Check to see if the message sender has the owner role or manage roles
+        let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+        let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+        // if sender dies not have owner role 
+        if((ownerRole === null) && (manRole === null)){
+            // return error
+            return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+  
+        }
 
 
 
 
-
-
+    
+    //setname and color
     let name;                                 
     let usercolor;
 
@@ -70,8 +78,8 @@ module.exports = {
         if(myRole!= null){
             // Edit name of a role
             myRole.edit({color: usercolor })
-            .then(newrole=>{
-                message.channel.send(`The role ${name} was changed to ${usercolor}`)})
+            .then(newcolor=>{
+                message.channel.send(`The role ${myRole} was changed to ${usercolor}`)})
             .catch(console.error)
         }
         else{

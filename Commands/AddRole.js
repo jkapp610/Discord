@@ -12,6 +12,18 @@ const client = new Discord.Client();
     description: "Add a role ",
     //execute is the function that gets ran when the file is called
     execute(message,args){
+      //Check to see if the message sender has the owner role or manage roles
+      let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+      let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+      // if sender dies not have owner role 
+      if((ownerRole === null) && (manRole === null)){
+          // return error
+          return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+
+      }
+
+
+
         //declare variables 
         let member; // member is the member who is getting the role
         let rolename;//rolename is the name passed in by the user

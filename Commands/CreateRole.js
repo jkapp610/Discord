@@ -7,9 +7,24 @@ module.exports = {
     description: "Creates a role ",
     //execute is the function that gets run when the file is called
     execute(message,args){
+    
+        //Check to see if the message sender has the owner role or manage roles
+      let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+      let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+      // if sender dies not have owner role 
+      if((ownerRole === null) && (manRole === null)){
+          // return error
+          return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+
+      }
+
+
+
+
         //set  name and color
         let name;                                 //QA-ZACH: Cannot create a role that have two more words in it.
         let usercolor;
+       
 
          for(i=1;i < args.length;i++){
             //if index is flag charector

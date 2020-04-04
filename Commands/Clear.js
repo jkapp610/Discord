@@ -5,6 +5,20 @@ module.exports = {
     description: "clears messages from the channel given an argument",
      //execute is the function that will run when the file is called
     execute(message,args){
+
+        //Check to see if the message sender has the owner role or manage roles
+        let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+        let chRole = message.member.roles.find(rol => rol.name === "Manage Channel");
+        // if sender dies not have owner role 
+        if((ownerRole === null) && (chRole === null)){
+            // return error
+            return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Channel`);
+  
+        }
+
+
+
+
          //if there is no 2nd argument
         if(!args[1]){
             // output error message

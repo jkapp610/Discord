@@ -8,6 +8,15 @@ module.exports = {
   //execute is the function that gets ran when the file is called
   execute(message,args){
     
+         //Check to see if the message sender has the owner role or manage roles
+         let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+         let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+         // if sender dies not have owner role 
+         if((ownerRole === null) && (manRole === null)){
+             // return error
+             return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+   
+         }
 
     //declare variables 
     let member; // member is the member who is getting the role
@@ -55,7 +64,7 @@ module.exports = {
 }
 
   }
-  message.channel.send(`the members name is ${memname}`)
+  
   
     if(!memname){
      //set the menber that sent the message
@@ -81,9 +90,8 @@ module.exports = {
       
       //check to see if the member has the role
       let memberRole = member.roles.find(rol => rol.name === rolename);
-      //let memberRole =1;
-      message.channel.send(`${myRole}`);
-      message.channel.send(`${memberRole}`);
+    
+      
 
       //if the role exists and the member has the role (myRole! = null)
       if((myRole !=null) &&(memberRole != null)){
