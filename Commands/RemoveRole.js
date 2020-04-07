@@ -68,7 +68,7 @@ module.exports = {
   
     if(!memname){
      //set the menber that sent the message
-      member1 = message.member;
+      member = message.member;
     }
     else{
       // sets the member based on the members name
