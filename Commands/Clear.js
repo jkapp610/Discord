@@ -8,11 +8,11 @@ module.exports = {
 
         //Check to see if the message sender has the owner role or manage roles
         let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
-        let chRole = message.member.roles.find(rol => rol.name === "Manage Channel");
+       
         // if sender dies not have owner role 
-        if((ownerRole === null) && (chRole === null)){
+        if((ownerRole === null)){
             // return error
-            return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Channel`);
+            return message.channel.send(`Error: ${message.member} you do not have role of Owner `);
   
         }
 
