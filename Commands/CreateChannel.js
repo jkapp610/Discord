@@ -11,6 +11,7 @@ module.exports = {
         //Check to see if the message sender has the owner role or manage roles
         let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
         let chRole = message.member.roles.find(rol => rol.name === "Manage Channels");
+        let channelType;
         // if sender dies not have owner role 
         if((ownerRole === null) && (chRole === null)){
             // return error
@@ -30,7 +31,7 @@ module.exports = {
 
         for(i=1;i < args.length;i++){
             
-                //
+            if(args[i]!= ","){
                if(i === 1){
                    channelname= args[i];
                }
@@ -38,6 +39,11 @@ module.exports = {
                else{
                 channelname= channelname + " "+args[i];
                }
+            }
+            else{
+                channelType = args[i+1];
+                i++
+            }
     
             
         }
@@ -47,7 +53,7 @@ module.exports = {
         // call the create role function
         message.guild.createChannel( channelname,{ //QA-ZACH: this current allows the user to exceed the max character limit, but does not inform the user that they did preventing the creation of the channel 
 
-            type: "text"
+            type:channelType 
         // outputs error message that the role was created
         }).then(channel =>
             {

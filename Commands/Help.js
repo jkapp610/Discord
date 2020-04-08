@@ -10,6 +10,19 @@ module.exports = {
     description: "creates an enbed in discord",
     // execute is the function that will be ran when the file is called
     execute(message,args){
+        const embed = new Discord.RichEmbed()
+             //creates a title for the embed
+             .setTitle("Notes about commands")
+             
+             .addField("Info","Command name are Not case sensitive, but Role and Channel names are case sensitive")
+             
+             .setColor(0xF1C40F);
+             // bot outputs the embed message to the channel
+             message.channel.send(embed);
+
+          
+           
+
 
         // calls to the diffent command
 

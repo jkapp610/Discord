@@ -54,7 +54,30 @@ module.exports = {
             .catch(console.error)
         }
         else{
+            for(i=1;i < args.length;i++){
+             
+                
+               if(i === 1){
+                   channelname= args[i];
+               }
+            
+               else{
+                channelname= channelname + " "+args[i];
+               }
+    
+            
+        }
+        let mychannelvoice = message.guild.channels.find(ch => ch.name === channelname);
+        if(mychannelvoice !=null){
+            // call the Deleate role
+            mychannelvoice.delete()
+             // outputs error message that the role was created
+            .then(role => console.log('Channel Deleted'))
+            .catch(console.error)
+        }
+        else{
             message.channel.send(`Error there is no channel named ${channelname}`);
+        }
         }
 
     }
