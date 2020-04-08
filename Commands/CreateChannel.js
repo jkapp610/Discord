@@ -30,16 +30,19 @@ module.exports = {
         let channelname;
 
         for(i=1;i < args.length;i++){
-            
+            //if  args[i] is not the flag charector
             if(args[i]!= ","){
+                //if i is one
                if(i === 1){
+                   // channelname is equal to args[i]
                    channelname= args[i];
                }
-            
-               else{
-                channelname= channelname + " "+args[i];
+               //else i is not 1 channel name equals the catination of the channel name prevously and args[i]
+                else{
+                    channelname= channelname + " "+args[i];
                }
             }
+            // else it is the flag charector channel type is equal to args[i + 1]
             else{
                 channelType = args[i+1].toLowerCase();
                 i++
