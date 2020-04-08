@@ -26,16 +26,17 @@ module.exports = {
         }
 
 
-         // set channel Name to name passed in
+         // declare the channelname
          let channelname;
 
          for(i=1;i < args.length;i++){
              
-                 //
+                 //if i is equal to 1
                 if(i === 1){
+                    //set chanelname equal to args ant index i
                     channelname= args[i];
-                }
-             
+                 }
+                //else chanelname equals the the catanination of the channel name and args at index i (with a dash)
                 else{
                  channelname= channelname + "-"+args[i];
                 }
@@ -47,27 +48,32 @@ module.exports = {
         let mychannel = message.guild.channels.find(ch => ch.name === channelname);
         // if channel exists 
         if(mychannel != null){
-            // call the Deleate role
+            // call the Deleate channel
             mychannel.delete()
-             // outputs error message that the role was created
+             // outputs  message that the channelwas created
             .then(role => console.log('Channel Deleted'))
             .catch(console.error)
         }
+        // else if channel name is equal to null means that it is either not a channel on the server or it is a voice channel
         else{
+            //for loop to to loop though the args array and construct the voice channel name
             for(i=1;i < args.length;i++){
              
-                
+                //if i is equal to 1
                if(i === 1){
+                    //set chanelname equal to args ant index i
                    channelname= args[i];
                }
-            
+                //else chanelname equals the the catanination of the channel name and args at index i (with a space)
                else{
                 channelname= channelname + " "+args[i];
                }
     
             
         }
+        // check to see if channel voice name is equal to what the user passed ib
         let mychannelvoice = message.guild.channels.find(ch => ch.name === channelname);
+        //of the channel exists 
         if(mychannelvoice !=null){
             // call the Deleate role
             mychannelvoice.delete()
@@ -75,6 +81,7 @@ module.exports = {
             .then(role => console.log('Channel Deleted'))
             .catch(console.error)
         }
+        //else channel is not on the surever
         else{
             message.channel.send(`Error there is no channel named ${channelname}`);
         }

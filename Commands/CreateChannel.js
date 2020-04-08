@@ -41,12 +41,18 @@ module.exports = {
                }
             }
             else{
-                channelType = args[i+1];
+                channelType = args[i+1].toLowerCase();
                 i++
             }
     
             
         }
+        // if there is no channel type given
+        if(!channelType){
+           return message.channel.send(`Error: no channel type given`)
+        }
+
+      
 
     
 
