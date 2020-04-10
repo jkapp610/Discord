@@ -89,6 +89,10 @@ const client = new Discord.Client();
 
           return message.channel.send('Error: there is no role name given ');
       }
+
+      if((rolename === "@everyone")||(rolename === "JLK BOT")){
+        return message.channel.send(`Error ${rolename} is a role that can not be added to ${member} `);
+      }
         //set the role
         let myRole = message.guild.roles.find(rol => rol.name === rolename);
         //if the role exists (myRole! = null)
