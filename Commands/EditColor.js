@@ -50,7 +50,9 @@ module.exports = {
             return message.channel.send('Error: there is no role name given ');
         }
 
-
+        if((name === "@everyone")||(name === "JLK BOT")){
+            return message.channel.send(`Error ${name} is a role whoes color can not be modified  `);
+          }
 
         //check to see if a third argument is passed in
         //if not set color to a defult color
