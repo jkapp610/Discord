@@ -36,7 +36,9 @@ module.exports = {
         }
         
 
-            
+        if((name === "@everyone")||(name === "JLK BOT")){
+            return message.channel.send(`Error ${name} is a role that can not be deleted from the server `);
+          }
         
 
 
