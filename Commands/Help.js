@@ -33,7 +33,11 @@ module.exports = {
             .addBlankField()
             .addField("Create Channel","Example:!CreateChannel hello world , text  OR !CreateChannel this is a test , voice\n\nDescription: crates a channel of the name  and type that is provided by the user ")
             .addBlankField()
-            .addField("Delete Channel","Example!deleteChannel channel name \n\n Description: deletes the channelel that is passed by the user")
+            .addField("Delete Channel","Example: !deleteChannel channel name \n\n Description: deletes the channelel that is passed by the user")
+            .addBlankField()
+            .addField("Edit Channel","Exaample:!editchannel oringinal name , new name \n\n Description: changes the channel name that  is given by the user ")
+            .addBlankField()
+            .addField("Kick","Example: !kick EvilMonkeys \n\n Description: Kicks the user given off the server ")
             .setColor(0xF1C40F);
              // bot outputs the embed message to the channel
              message.channel.send(embed);
