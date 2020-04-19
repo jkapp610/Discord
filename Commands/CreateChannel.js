@@ -55,7 +55,9 @@ module.exports = {
            return message.channel.send(`Error: no channel type given`)
         }
 
-      
+        if((channelType !="text" )&& (channelType != "voice") ){
+            return message.channel.send(`Error: the channel type is not reconized please try command again using type text or voice`);
+        }
 
     
 
@@ -67,7 +69,7 @@ module.exports = {
         }).then(channel =>
             {
             channel.setParent(message.guild.channels.find(c => c.name == "Jlk Bot Channels"));
-            console.log('Channel created');}
+            message.channel.send('Channel created');}
         ).catch(console.error)
 
     }

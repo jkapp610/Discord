@@ -26,10 +26,7 @@ module.exports = {
 
     
         
-       /* message.reply(`The roles on the Server are`);
-    message.channel.send(message.guild.roles.map(ro => ro.name));
-    message.reply(`The channel on the Server are`);
-    message.channel.send(message.guild.channels.map(ch => ch.name));*/
+ 
         
     }
 

@@ -89,7 +89,11 @@ const client = new Discord.Client();
 
           return message.channel.send('Error: there is no role name given ');
       }
-
+      // if the user is trying to add the owner role output message saying the can't do that 
+      if (rolename === "Owner"){
+        return message.channel.send(`The role ${rolename} can not be added to ${member}`)
+      }
+      // if role is equal to @everone or if it equals  JLK BOT output an error 
       if((rolename === "@everyone")||(rolename === "JLK BOT")){
         return message.channel.send(`Error ${rolename} is a role that can not be added to ${member} `);
       }

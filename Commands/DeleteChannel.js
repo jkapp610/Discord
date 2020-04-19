@@ -51,7 +51,7 @@ module.exports = {
             // call the Deleate channel
             mychannel.delete()
              // outputs  message that the channelwas created
-            .then(role => console.log('Channel Deleted'))
+            .then(message.channel.send('Channel Deleted'))
             .catch(console.error)
         }
         // else if channel name is equal to null means that it is either not a channel on the server or it is a voice channel
@@ -78,7 +78,7 @@ module.exports = {
             // call the Deleate role
             mychannelvoice.delete()
              // outputs error message that the role was created
-            .then(role => console.log('Channel Deleted'))
+            .then(message.channel.send('Channel Deleted'))
             .catch(console.error)
         }
         //else channel is not on the surever

@@ -87,6 +87,12 @@ module.exports = {
             return message.channel.send('Error: there is no new role name given ');
             
         }
+
+        if(newName === "Owner"){
+            return message.channel.send(`Error the ${rolename} can not be change to ${newName}`)
+        }
+
+
         if((rolename === "@everyone")||(rolename === "JLK BOT")){
             return message.channel.send(`Error ${rolename} is a role whoes name can not modified `);
           }
