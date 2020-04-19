@@ -1,21 +1,58 @@
 module.exports = {
     //example of the command !CreateRole Cat BLUE
 
-    //name of the command 
+    //name of the command
     name: "createrole",
     //description of the command
     description: "Creates a role ",
     //execute is the function that gets run when the file is called
     execute(message,args){
+    
+        //Check to see if the message sender has the owner role or manage roles
+      let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
+      let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+      // if sender dies not have owner role 
+      if((ownerRole === null) && (manRole === null)){
+          // return error
+          return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+
+      }
+
+
+
+
         //set  name and color
-        let name = args[1];
-        let usercolor = args[2];
-        
-        
-        //check to see if there is a role name is passed in 
+        let name;                                 //QA-ZACH: Cannot create a role that have two more words in it.
+        let usercolor;
+       
+
+         for(i=1;i < args.length;i++){
+            //if index is flag charector
+            if(args[i]!= ","){
+                //
+               if(i === 1){
+                   name= args[i];
+               }
+            
+               else
+                name= name + " "+args[i];
+                //message.channel.send(`this is name at index${i} is ${name}` );
+            }
+            else{
+                usercolor = args[i+1];
+                i++
+            }
+
+            
+        }
+
+
+
+
+        //check to see if there is a role name is passed in
         //if not return an error
         if(!name){
-            
+
             return message.channel.send('Error: there is no role name given ');
         }
         //check to see if the role already exists
@@ -36,45 +73,45 @@ module.exports = {
         else{
              //set color to uppercase
             usercolor= usercolor.toUpperCase();
-            // call check color if it returns false 
+            // call check color if it returns false
             if (checkcolor(usercolor) === false){
                 //return(exit command)
                 return
             }
           }
-      
-       
+
+
          // call the create role function
         message.guild.createRole({
-            name: name,
+            name: name, //QA-ZACH: this current allows the user to exceed the max character limit, but does not inform the user that they did preventing the creation of the role
             color: usercolor,
         // outputs message that the role was created or an error if there were any
-        
+
         }).then((newrole) => {
             message.channel.send(`Role ${newrole} Created`)})
         .catch(console.error)
-        // fuction for making sure the that the color is a color 
+        // fuction for making sure the that the color is a color
         function checkcolor(color){
-            // array of accepted colors 
-           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","PINK","GOLD","PURPLE"];
-           // array of hex charectors 
+            // array of accepted colors
+           const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","ORANGE","GOLD","PURPLE"];
+           // array of hex charectors
            const hexchar =["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"];
            //bool to keep track of if the color is accepted
           var bool;
           // keeps count of the number of charectors in color are hex charector
           var hexcount =0;
-           
+
            //if the color is a hex
            if(color.startsWith('#')){
-               //check to see of the hex color is the right length 
+               //check to see of the hex color is the right length
                if(color.length===7){
                    //set bool to true
                    bool= true
-                  
+
 
                     // loop to though each char in the color string
                    for(i=1;i<color.length;i++){
-                       // loop though the the hexcharector array 
+                       // loop though the the hexcharector array
                        for(j=0;j<hexchar.length;j++){
                            // if a charector is a hex charector
                            if(color[i]=== hexchar[j]){
@@ -92,15 +129,15 @@ module.exports = {
                        bool = false;
                    }
 
-               
+
                 }
-                //hex value is not of the right length 
+                //hex value is not of the right length
                 else{
                     // set bool to false
                     bool = false;
                 }
 
-               
+
            }
 
            //color is not a hex value
@@ -117,20 +154,17 @@ module.exports = {
             }
            //if bool = false output error
             if(bool === false){
-                // error message 
+                // error message
                 message.channel.send(`${color} is not a color that is recogized`);
                 //returm false
                 return false;
             }
-           
+
 
         }
 
-        
+
         }
-       
+
 
 }
-
-
-

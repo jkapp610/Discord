@@ -1,0 +1,120 @@
+1. deleteChannel command will by default delete the channel that it was typed in, additionally, if you put in the wrong channel name it will also delete the channel it was typed in.
+  1.a Possible add a are you sure prompt to this command to prevent accidental usage of it.
+  1.b Don't allow for the user to delete a channel if there is any parameters given to the command example don't delete channel that the user is in if they type '!deltechannel general' unless they are in the general channel (To protect the user from them selves);
+2. createChannel does not seem to break when trying with various different types of input, such as emoji's or pictures
+  2.1 !createChannel also files to tell user when they input an invalid character limit
+  2.1 !createChannel maybe allow for user to input multiple words, but then just input a dash between the arguments to create the channels. For example '!createChannel blue berry pie' will create channel 'blue-berry-pie'
+3. !help
+  3.a has outdated information about the deleteChannel commands
+  3.b outdated information about deleterole.
+  3.c Add information about editrole command
+4. !clear command putting a negative number for clear breaks the bot
+5. !clear crashes bot when putting in any integer that is 100 or greater
+6. !createRole does not inform the user when the exceed the max 100 character role name limit
+  6.1 !createRole cannot have a name with spaces in it
+
+
+TEST PLAN
+  TestCase: Testing Deletechannel
+    InputGiven: !deletechannel
+    Expected Output: remove the current channel
+    Actual Output: deleted the current channel
+    passed
+    Notes: possibly add a way to delete the channel that the user is not currently in
+
+  TestCase: Testing !createChannel **A VERY LONG NAME, LITERALLY**
+    Inputgiven: !creatChannel THE LONG NAME;
+    ExpectedOutput: Creates channel called THE VERY LONG NAME
+    ActualOutput: Nothing
+    failed
+    Note: This didn't break the bot, but it didn't warn or inform the user of the 100 character limit of channel names
+
+  TestCase: Testing !createChannel jim
+    Inputgiven: !creatChannel jim;
+    ExpectedOutput: Creates channel called jim
+    ActualOutput: created a channel called jim
+    pass
+
+  TestCase: Testing !createChannel :smilyface:
+    Inputgiven: !creatChannel :smilyface:;
+    ExpectedOutput: Creates channel called :smilyface:
+    ActualOutput: created a channel called :smilyface:
+    pass
+
+  TestCase: Testing !clear
+    InputGiven: !clear -11
+    ExpectedOutput: ? an error of somekind
+    ActualOutput: Bot Crashed
+    Failed
+    Notes: I added a simple if statement to check to make sure that the input number cannot be less than 0
+
+  TestCase: Testing !clear
+    InputGiven: !clear -11
+    ExpectedOutput: Error stating value cannot be less than 0
+    ActualOutput: Error stating value cannot be less than 0
+    pass
+
+  TestCase: Testing !clear
+    InputGiven: !clear 19999999
+    ExpectedOutput: Removes everything
+    ActualOutput: Bot Crashed
+    Failed
+    Notes: There is a limit to how many message you can delete at a time, which is 100. So I modified by previous if statement and then added an error message to make sure the input is between 0-100
+
+  TestCase: Testing !clear
+    InputGiven: !clear 19999999
+    ExpectedOutput: Removes everything/error message
+    ActualOutput: Error Message
+    pass
+    Note: while the expectation is to remove all messages, the error has been put into place because it is a limitation set by discord it self.
+
+  TestCase: Testing !createRole
+    Inputgiven: !createRole blue blue;
+    ExpectedOutput: Creates role called blue with the color BLUE
+    ActualOutput: blue role created with color BLUE
+    pass
+
+  TestCase: Testing !createRole for invalid color
+    Inputgiven: !createRole blue cheese;
+    ExpectedOutput: Error invalid color
+    ActualOutput: blue is not created and error is given stating that cheese is not a color
+    pass
+
+  TestCase: Testing !createRole for a very long role name
+    Inputgiven: !createRole *****alot of characters here, about 1980ish characters***** blue;
+    ExpectedOutput: Creates role called the character name with the color BLUE
+    ActualOutput: Nothing, the bot didn't crash either, but an error message with printed to console, but the user does not know anything about why the role was created.
+    Failed
+    Notes: While this did fail, I think that the only thing wrong with is that it didn't inform the user. However, I didn't change anything in the code to solve this issue
+
+  TestCase: Testing !createRole with an emoji as the name
+    Inputgiven: !createRole :Smilyface: blue;
+    ExpectedOutput: Creates role called :Smilyface: with the color BLUE
+    ActualOutput: :Smilyface: role created with color BLUE
+    pass
+    Note: didn't expect discord to like this, but it was fine with this.
+
+  TestCase: Testing !createRole with an url as the name
+    Inputgiven: !createRole url blue;
+    ExpectedOutput: Creates role called url with the color BLUE
+    ActualOutput: url role created with color BLUE
+    pass
+
+  TestCase: Testing !createRole with a name with various words
+    Inputgiven: !createRole THE BIG blue;
+    ExpectedOutput: Creates role called THE BIG with the color BLUE
+    ActualOutput: Error message saying Big is not a color
+    failed
+    Note: This one requires a bit of logic changes to fix, but its not intended to as stated in the commands description, but it is allowed by discord.
+
+  TestCase: Testing !help to make sure everything is consistent
+    Inputgiven: !help
+    ExpectedOutput: List of all the Commands
+    ActualOutput: List of most of the commands and some of the commands typoed
+    failed?
+    Note: It worked, but the information was kinda wrong, so I ended up just adding the neccessary information
+
+
+
+
+﻿

@@ -1,13 +1,10 @@
-
 module.exports = {
     //name of the command
-    name: "editrole",
+    name: "editcolor",
     //description of the command
-    description: "Delete role from channel",
+    description: "edits the color of a role",
     //execute is the function that will run when the file is called
     execute(message,args){
-
-
 
         //Check to see if the message sender has the owner role or manage roles
         let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
@@ -16,137 +13,85 @@ module.exports = {
         if((ownerRole === null) && (manRole === null)){
             // return error
             return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
+  
+        }
 
-      }
 
 
 
     
-    //set the new name
-    let newName;
-    let rolename;
-    let newnameloc;
+    //setname and color
+    let name;                                 
     let usercolor;
-    for(i=1;i < args.length;i++){
-        //if index is Not flag charector (, tells you when you have reached the end of name) 
+
+     for(i=1;i < args.length;i++){
+        //if index is flag charector
         if(args[i]!= ","){
-            //if it is the first word of the role name set it equal to rolename
+            //
            if(i === 1){
-               rolename= args[i];
+               name= args[i];
            }
-           // if it is not the first word of the role name add it to the end of the rolename
+        
            else
-            rolename= rolename + " "+args[i];
+            name= name + " "+args[i];
             //message.channel.send(`this is name at index${i} is ${name}` );
         }
-        //if it is the flag charector
         else{
-          // set memloc to i + 1 and break out the loop
-          newnameloc= i+1;
-          break;
-          
+            usercolor = args[i+1];
+            i++
         }
-       
-      }
-    // loop though the last part  of the args array to get the newrole name and color if there is one
-    for(j= newnameloc;j< args.length;j++){
 
-       //if there args[j] is not a comma
-       if(args[j]!= ","){
-            //if set the first word of the members name set it equal to memname
-            if(j === newnameloc){
-           
-                newName= args[newnameloc];
-       
-            }
-            //else (there is more than one word) and add it to the end
-            else{
-                newName= newName + " "+args[j];
-            }
-        }
-        //otherwise args at index is a comma(meaning there is a color passed in)
-        else{
-
-            usercolor = args[j+1];
-            j++
-        }
+        
     }
-       
+   //check to see if there is a role name is passed in
+        //if not return an error
+        if(!name){
 
-    
-    
-
-
-
-        // if there is no origanl name given output error
-        if(!rolename){
-            return message.channel.send('Error: there is no original role name given ');
-             }
-        //output and error if no new role name is given
-        if(!newName){
-            return message.channel.send('Error: there is no new role name given ');
-            
+            return message.channel.send('Error: there is no role name given ');
         }
 
-        if(newName === "Owner"){
-            return message.channel.send(`Error the ${rolename} can not be change to ${newName}`)
-        }
-
-
-        if((rolename === "@everyone")||(rolename === "JLK BOT")){
-            return message.channel.send(`Error ${rolename} is a role whoes name can not modified `);
+        if((name === "@everyone")||(name === "JLK BOT")){
+            return message.channel.send(`Error ${name} is a role whoes color can not be modified  `);
           }
-            
 
-      
-        if(!usercolor){
+        //check to see if a third argument is passed in
+        //if not set color to a defult color
+        if(!usercolor|| usercolor === "#000000"){
+            //set color to a default
+            usercolor = "BLACK";//hex code for black
+
+        }
+        else{
+             //set color to uppercase
+            usercolor= usercolor.toUpperCase();
+            // call check color if it returns false
+            if (checkcolor(usercolor) === false){
+                //return(exit command)
+                return
+            }
+          }
+
+        
         //Set the role that needs to be changed
-        let myRole = message.guild.roles.find(rol => rol.name === rolename);
+        const myRole = message.guild.roles.find(rol => rol.name === name);
+       
         
         //if the role exists (myRole! = null)
         if(myRole!= null){
             // Edit name of a role
-            myRole.edit({name: newName})
-            .then(newrole=>{
-                message.channel.send(`The role ${rolename} was changed to ${newrole}`)})
+            myRole.edit({color: usercolor })
+            .then(newcolor=>{
+                message.channel.send(`The role ${myRole} was changed to ${usercolor}`)})
             .catch(console.error)
         }
         else{
             //output a message error message
-            message.channel.send(`Error: the role ${rolename} does not exist`); 
+            message.channel.send(`Error: the role ${name} does not exist`); 
         }
 
-        }
-       else{
-         //set color to uppercase
-         usercolor= usercolor.toUpperCase();
-         // call check color if it returns false
-         if (checkcolor(usercolor) === false){
-             //return(exit command)
-             return
-         }
 
-        
 
-        //Set the role that needs to be changed
-        let myRole = message.guild.roles.find(rol => rol.name === rolename);
-        
-        //if the role exists (myRole! = null)
-        if(myRole!= null){
-            // Edit name of a role
-            myRole.edit({name: newName, color: usercolor})
-            .then(newrole=>{
-                message.channel.send(`The role ${rolename} was changed to ${newrole}`)})
-            .catch(console.error)
-        }
-        else{
-            //output a message error message
-            message.channel.send(`Error: the role ${rolename} does not exist`); 
-        }
-    }
 
-        
-      
         function checkcolor(color){
             // array of accepted colors
            const colors = ['RED','GREEN','WHITE','BLACK',"BLUE","ORANGE","GOLD","PURPLE"];
@@ -219,8 +164,10 @@ module.exports = {
 
         }
 
+
       
-        
+     
+
        
     }
 
