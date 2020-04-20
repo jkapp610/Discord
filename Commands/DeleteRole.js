@@ -9,6 +9,7 @@ module.exports = {
         //Check to see if the message sender has the owner role or manage roles
         let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
         let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
+        let chan = message.member.roles.find(rol => rol.name === "Manage Channels")
         // if sender dies not have owner role 
         if((ownerRole === null) && (manRole === null)){
             // return error
@@ -37,6 +38,10 @@ module.exports = {
        
 
         if((name === "@everyone")||(name === "JLK BOT") ||(name === "Owner")){
+            return message.channel.send(`Error ${name} is a role that can not be deleted from the server `);
+          }
+
+          if((manRole !=null && name === "Manage Roles") || (manRole!= null && name === "Manage Channels")){
             return message.channel.send(`Error ${name} is a role that can not be deleted from the server `);
           }
         

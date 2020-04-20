@@ -88,7 +88,11 @@ module.exports = {
    if (rolename === "Owner"){
     return message.channel.send(`The role ${rolename} can not be removed `)
   }
- 
+  if((manRole !=null && rolename === "Manage Roles") || (manRole!= null && rolename === "Manage Channels")){
+    return message.channel.send(`Error  ${rolename} can not be removed from your self `);
+  }
+  
+  
   if((rolename === "@everyone")||(rolename === "JLK BOT")){
     return message.channel.send(`Error ${rolename} is a role that can not be removed from ${member} `);
   }

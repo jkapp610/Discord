@@ -88,7 +88,11 @@ module.exports = {
             
         }
 
-        if(newName === "Owner"){
+        if((rolename === "Owner")||( rolename === "Manage Roles")){
+            return message.channel.send(`Error the ${rolename} can not be changed`)
+        }
+
+        if((newName === "Owner")|| (newName === "Manage Roles")){
             return message.channel.send(`Error the ${rolename} can not be change to ${newName}`)
         }
 
