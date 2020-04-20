@@ -51,7 +51,7 @@ module.exports = {
         }
 
         if((name === "@everyone")||(name === "JLK BOT")){
-            return message.channel.send(`Error ${name} is a role whoes color can not be modified  `);
+            return message.channel.send(`Error ${name} is a role whose color can not be modified  `);
           }
 
         //check to see if a third argument is passed in

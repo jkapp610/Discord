@@ -15,7 +15,7 @@ const client = new Discord.Client();
       //Check to see if the message sender has the owner role or manage roles
       let ownerRole = message.member.roles.find(rol => rol.name === "Owner");
       let manRole = message.member.roles.find(rol => rol.name === "Manage Roles");
-      // if sender dies not have owner role 
+      // if sender does not have owner role 
       if((ownerRole === null) && (manRole === null)){
           // return error
           return message.channel.send(`Error: ${message.member} you not have one or both of the following roles Owner or Manager Roles`);
@@ -93,7 +93,7 @@ const client = new Discord.Client();
       if (rolename === "Owner"){
         return message.channel.send(`The role ${rolename} can not be added to ${member}`)
       }
-      // if role is equal to @everone or if it equals  JLK BOT output an error 
+      // if role is equal to @everone or if it equals JLK BOT output an error 
       if((rolename === "@everyone")||(rolename === "JLK BOT")){
         return message.channel.send(`Error ${rolename} is a role that can not be added to ${member} `);
       }

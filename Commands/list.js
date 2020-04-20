@@ -16,7 +16,7 @@ module.exports = {
              .addField("Roles",message.guild.roles.map(ro => ro.name))
              .addBlankField()
              .addField("Channels",message.guild.channels.map(ch => ch.name))
-             .addField("Notes","Jlk Bot Channels is a channel catigory Not A channel\n\n Roles @eveyone, and JLK Bot are not able to be manipulated")
+             .addField("Notes","Jlk Bot Channels is a channel cateigory Not A channel\n\n Roles @eveyone, and JLK Bot are not able to be manipulated")
              .addBlankField()
             .setColor(0xF1C40F);
              // bot outputs the embed message to the channel

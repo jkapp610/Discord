@@ -56,7 +56,7 @@ module.exports = {
         }
 
         if((channelType !="text" )&& (channelType != "voice") ){
-            return message.channel.send(`Error: the channel type is not reconized please try command again using type text or voice`);
+            return message.channel.send(`Error: the channel type is not recognized please try command again using type text or voice`);
         }
 
     

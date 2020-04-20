@@ -50,7 +50,7 @@ module.exports = {
                return  message.channel.send(`Error there is no member on this server by the name of ${memname}`);
               }
               if (member === message.member){
-                  return message.channel.send(`Error you can't kick your self out of the surnver silly`)
+                  return message.channel.send(`Error you can't kick yourself out of the server silly`)
 
 
               }
